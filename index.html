@@ -30,11 +30,14 @@
           key: "c45fe6f7-1c8e-4af9-9181-2caec1633e9c",
           container: document.getElementById("webar-container"),
         });
-  
-        const model = await blippar.loadGltfModel("blippar_practica/assets/wolf.glb");
-        model.position.set(0, 0, -2);
-        model.scale.set(1, 1, 1);
-        blippar.scene.add(model);
+
+        // Crear un círculo 3D
+        const geometry = new THREE.CircleGeometry(1, 32); // Radio 1, 32 segmentos
+        const material = new THREE.MeshBasicMaterial({ color: 0xffff00 }); // Color amarillo
+        const circle = new THREE.Mesh(geometry, material);
+        circle.position.set(0, 0, -2); // Ubicación en el espacio
+        blippar.scene.add(circle);
+
       } catch (e) {
         console.error("Error al iniciar WebAR:", e);
       }
